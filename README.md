@@ -1,1 +1,1 @@
-This is the companion repository for the paper **"An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry"** accepted at The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA).
+Companion repository for the paper **"An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry"** accepted at The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA).
