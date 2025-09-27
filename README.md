@@ -1514,7 +1514,7 @@ model_results = model.fit(cov_type='cluster', cov_kwds={'groups': cluster_groups
 print(model_results.summary())
 ```   
 
-The training output is too big to show inline but you can access it here: [!link]  
+The training output is too big to show inline but you can access it [here](results/TWFE_With_Zip_And_Year_FEs_OLS%20Regression%20Results.txt).  
 
 Leaving out all covariates and considering only the year and the ZIP FEs and the event dummies will also produce the same sort of result.  
 ```python
@@ -1532,7 +1532,7 @@ model_results = model.fit(cov_type='cluster', cov_kwds={'groups': cluster_groups
 print(model_results.summary())
 ```  
 
-Here's the [!link] to the training output.  
+You can see the training output [here](results/TWFE_With_Zip_And_Year_FEs_No_Covariates_OLS%20Regression%20Results.txt).  
 
 In both cases, notice the following about the above result:  
 * **R² explosion (0.288 --> 0.995)**:  As expected the ZIP FEs soak up all the variance leaving only the intra-ZIP over-time variance to be measured by the event time dummies. _But that's not what we want these dummies to measure!_
