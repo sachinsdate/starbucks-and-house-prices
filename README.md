@@ -1,5 +1,7 @@
 This is the companion repository for the paper **"An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry" accepted at [The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA)](https://dsaa.ieee.org/2025/technical-program/).**
 
+_**Starbucks :tm:** is a registered trademark of the [Starbucks Corporation](www.starbucks.com)._
+
 # Objective
 Our study tries to answer two questions:
 1.	**Does a higher pre-existing house price index (HPI) relative to matched controls make Starbucks’ entry more likely?** In other words, does Starbucks, more often than not, enter neighborhoods that see higher than average house price growth? This is the **reverse effect**. If it exists, **reverse causation** is plausible although not guaranteed, because **anticipation** is likely. Neighborhoods that anticipate Starbucks' entry might start become dearer (especially close to the entry year). We'll examine this point closely soon. The effect of **confounders** is equally important. Variables such as mass transit improvements could boost house prices. But they also increase foot traffic, population density, and with that, make the neighborhood attractive to a cafe such as Starbucks. Thus, it's a strong statement to say that Starbucks proactively _selects_ for fast growing neighborhoods, and _that_ makes it a very interesting topic of research. 
@@ -59,7 +61,7 @@ The $(prev\_2yr\_hpi\_change)_{it}$ and $(prev\_5yr\_hpi\_change)_{it}$ variable
 
 $ϵ_{it}$ is the error term.  
 
-We varied $𝜏$ from -5 to 5, leaving out 𝜏 =-5 to avoid perfect multicollinearity. Thus, the baseline year is $𝜏$ =-5. All estimated effects are  interpreted w.r.t. the HPI in this year in both the treated and the control ZIPs.  
+We varied $𝜏$ from -5 to 5, leaving out 𝜏 =-5 to avoid perfect multicollinearity. Thus, the baseline year is $𝜏$ =-5. All estimated effects are interpreted w.r.t. the HPI in this year in both the treated and the control ZIPs.  
 
 
 The TWFE event study expands the scope of the basic 2x2 DiD in the following important ways:
@@ -73,7 +75,7 @@ Speaking of unit FEs, notice that our TWFE model leaves them out. We'll have to 
 
 Our focus will be on the coefficients $\beta_{\tau}$ of the event variables $D_{𝜏,it}$. **A robust, positive trend in the pre-entry coefficients suggests (but does not prove) reverse causation** between house prices and Starbucks entry (the reverse path). A similar **robust positive trend in the post-entry coefficients suggests forward causation** (the forward path).  
 
-Even with positive, significant coefficients, it's entirely likely that Starbucks has nothing to do with house price growth. The effects might be almost entirely explanable using non-Starbucks covariates and by the structure of the model itself. To minimize this possibility, we conduct a placebo test in which we open "fake" Starbucks store in some of the ZIPs in the control group and re-run the model with the fake stores as Treatment, along with a matched set of controls. **In the placebo arm, we would expect the pre- and post-entry coefficients to be statistically indistinguishable from zero**. 
+Even with positive, significant coefficients, it's entirely likely that Starbucks has nothing to do with house price growth. The effects might be almost entirely explainable using non-Starbucks covariates and by the structure of the model itself. To minimize this possibility, we conduct a placebo test in which we open "fake" Starbucks store in some of the ZIPs in the control group and re-run the model with the fake stores as Treatment, along with a matched set of controls. **In the placebo arm, we would expect the pre- and post-entry coefficients to be statistically indistinguishable from zero**. 
 
 ## A note about the parallel trends assumption of DiD models
 In a 2x2 DiD setting, the conventional definition of parallel trends is that in the absence of treatment, the treated and control groups would have experienced the same average outcome trend over time.  
@@ -82,7 +84,7 @@ In other words, the mean pre- to post-treatment change in the response experienc
 
 Careful matching of controls makes the assumption more plausible (although it doesn’t guarantee it) and that’s one of the things we have spent a lot of time on in our study.  
 
-In a TWFE event study that does not study reverse causation, we would expect the pre-trend event coefficients to be statistically insignificant. However, we are explicitly testing for reverse causation, i.e. selection on trend. So positive pre-trend coefficients is the effect we _expect_ to see. Therefore **we do not assume strict parallel trends**. Instead, we rely on tests such as **donut** on the pre-trend coefficients to rule out **anticipation** to which reverse causative studies are especially vulnerable. We also examine the **joint significance of pre-entry coefficients in the placebo test** and expect them to be jointly insignficant. 
+In a TWFE event study that does not study reverse causation, we would expect the pre-trend event coefficients to be statistically insignificant. However, we are explicitly testing for reverse causation, i.e. selection on trend. So positive pre-trend coefficients is the effect we _expect_ to see. Therefore **we do not assume strict parallel trends**. Instead, we rely on tests such as **donut** on the pre-trend coefficients to rule out **anticipation** to which reverse causative studies are especially vulnerable. We also examine the **joint significance of pre-entry coefficients in the placebo test** and expect them to be jointly insignificant. 
 
 
 # Method
@@ -107,7 +109,7 @@ The outcome of the above clean-up procedure yields the files:
 * **Starbucks_Stores_Jan2022_CORRECT_ZIPS.csv**, and 
 * **Starbucks_Stores_Sep2024.csv**   
 
-All of which are checked into this repo. You can use these files as is, i.e. you don't need to perform the data cleanup from scratch (and trust me, you don't want to either. It's a lot of grunt work!)
+All of which are checked into this repo. You can use these files as is, i.e., you don't need to perform the data cleanup from scratch (and trust me, you don't want to either. It's a lot of grunt work!)
 
 ## Data preprocessing
 Pre-processing proceeds through the following steps:
@@ -167,7 +169,7 @@ You should see the following output:
 
 You should end up with 3 Dataframes for 2017, 2022 and 2024 with respectively 13608, 15003, 16529 Starbucks store locations distributed among respectively 5863, 6499, and 7125 unique ZIPs.  
 
-2. From the 2022 and 2017 Dataframes, we build a new Dataframe containing the ZIPs that saw a first-time entry of Starbucks between Feb 2017 and Jan 2022 and the set of stores corrosponding to those ZIPs. We'll also do a quick data sanity check to verify there are no duplicate stores lurking in the data.   
+2. From the 2022 and 2017 Dataframes, we build a new Dataframe containing the ZIPs that saw a first-time entry of Starbucks between Feb 2017 and Jan 2022 and the set of stores corresponding to those ZIPs. We'll also do a quick data sanity check to verify there are no duplicate stores lurking in the data.   
 
 ```python
 # Get zips in 2022 that were not there in 2017
@@ -415,7 +417,7 @@ The new grouped first-open-year Dataframe now contains 524 unique ZIPs.  Here's 
 524 rows × 2 columns
 ```  
 
-5. Next, we load the ZIP-wise HPI data from the FHFA file into a Dataframe, add a percentage change column (hpi_change) which captures the Y-o-Y percentage change in HPI codes, and merge it with the first-open-year Dataframe on the ZIP code column. We also add two new columns in the marged Dataframe: An event_time column which is the integer difference between Year and first_open_year, and a starbucks_opened column which contains a 1 or 0 based on whether first_open_year column contains a valid value for that ZIP, in other worda, whether the ZIP experienced a first-time entry of Starbucks during Feb 2017 and Dec 2021.
+5. Next, we load the ZIP-wise HPI data from the FHFA file into a Dataframe, add a percentage change column (hpi_change) which captures the Y-o-Y percentage change in HPI codes, and merge it with the first-open-year Dataframe on the ZIP code column. We also add two new columns in the merged Dataframe: An event_time column which is the integer difference between Year and first_open_year, and a starbucks_opened column which contains a 1 or 0 based on whether first_open_year column contains a valid value for that ZIP, in other words, whether the ZIP experienced a first-time entry of Starbucks during Feb 2017 and Dec 2021.
 
 ```python
 # Load the FHFA ZIP-5 HPI dataset from https://www.fhfa.gov/data/hpi/datasets?tab=additional-data
@@ -481,7 +483,7 @@ The resulting merged Dataframe ought to look as follows:
 648254 rows × 6 columns
 ```  
 
-Since the FHFA file contains data about 12192 unique ZIPs (i.e. way more than in the first-open-year Dataframe), and it contains yearly HPI data for each ZIP, most rows in the merged Dataframe will contain 0 in the starbucks_opened column, and NaN in the first_open_year and event_time columns. Specifically, you'll find that the merged Dataframe will contain 18414 Starbucks-free ZIPs (starbucks_opened=0), and 510 ZIPs in which Starbucks opened for the first time in the Feb 2017 to Dec 2021 timeframe (starbucks_opened=1).  
+Since the FHFA file contains data about 12192 unique ZIPs (i.e., way more than in the first-open-year Dataframe), and it contains yearly HPI data for each ZIP, most rows in the merged Dataframe will contain 0 in the starbucks_opened column, and NaN in the first_open_year and event_time columns. Specifically, you'll find that the merged Dataframe will contain 18414 Starbucks-free ZIPs (starbucks_opened=0), and 510 ZIPs in which Starbucks opened for the first time in the Feb 2017 to Dec 2021 timeframe (starbucks_opened=1).  
 
 6. Let's do a quick detour to look at the descriptive stats. We'll begin by examining the HPI profile of ZIPs in the year _prior_ to the year of first entry of Starbucks.  
 
@@ -494,7 +496,7 @@ df_treatment_prior_year_row = df_all[df_all['starbucks_opened'].eq(1) &
 
 df_treatment_prior_year_row = df_treatment_prior_year_row.dropna(subset=['HPI'])
 
-#Print the descritive stats
+#Print the descriptive stats
 print(df_treatment_prior_year_row['HPI'].describe())
 
 # Draw a histogram of HPI for the year prior to the one in which Starbucks opened
@@ -536,7 +538,7 @@ Name: HPI, dtype: float64
 
 Right away, this tells us two things:  
 - HPI (being a price variable) has the familiar, skewed, power law distribution. This justifies regressing log(HPI) as against the raw variable.  
-- Starbucks did not preferentially entry expensive neghborhoods. In fact, most of the first-time entries occurred in the middle price range (200 - 400).  
+- Starbucks did not preferentially entry expensive neighborhoods. In fact, most of the first-time entries occurred in the middle price range (200 - 400).  
 
 Let's also look at how the year of first entry is distributed across our treatment window. We need it to be more-or-less uniformly distributed across the treatment years.  
 ```python
@@ -566,7 +568,7 @@ Here's how the histogram looks like. Nothing to get freaked out about here.
 
 ![Distribution of treatment ZIP pool by year of first entry in the real (non-placebo) study](images/Fig2.jpg)  
 
-Finally, let's also verify that our treatment ZIPs cover most of the U.S. i.e. they are not unusually concentrated in, say, the Northeastern states or in California at the exclusion of other states.  
+Finally, let's also verify that our treatment ZIPs cover most of the U.S. i.e., they are not unusually concentrated in, say, the Northeastern states or in California at the exclusion of other states.  
 
 ```python
 # Load uszips.csv
@@ -607,18 +609,18 @@ print('Number of states covered in treatment group=',len(df_treatment_hpi_state_
 You should see the following histogram. The treatment ZIPs cover 45 of the 50 states.  
 ![Distribution of treatment ZIP pool by U.S. state in the real (non-placebo) study](images/Fig1.jpg)  
 
-7. Next, we assign pseudo first open years to all starbucks-free zips in the same proportion as they occur in the treatment zips lying in the merged Dataframe. The pseudo first open year enables the TWFE model to align treatment ZIPs with control ZIPs.  
+7. Next, we assign pseudo first open years to all Starbucks-free zips in the same proportion as they occur in the treatment zips lying in the merged Dataframe. The pseudo first open year enables the TWFE model to align treatment ZIPs with control ZIPs.  
 ```python
-# Get the Dataframe of starbucks free zips
+# Get the Dataframe of Starbucks free zips
 df_starbucks_free = df_all[df_all['starbucks_opened']==0].copy()
 
-# Group the starbucks free zips by Postcode in their natural order
+# Group the Starbucks free zips by Postcode in their natural order
 grouped_free = df_starbucks_free.groupby('Postcode', sort=False)
 
-# Contains counts of each starbucks-free ZIP in df_all
+# Contains counts of each Starbucks-free ZIP in df_all
 starbucks_free_zip_counts = np.array(grouped_free.size())
 
-# Get the actual starbucks free ZIP codes in that same order as the counts array
+# Get the actual Starbucks free ZIP codes in that same order as the counts array
 starbucks_free_zips = grouped_free.size().index.values
 
 # Get the distribution of first_open years
@@ -1058,7 +1060,7 @@ save_model_results_to_json(model_results, "real_study_results.json")
 ```  
 
 ## Training the placebo model
-The data processing and training data creation steps for the placebo model are approximately the same as for the real model (both models being TWFE event study models with the same structural form). The significant departure from the real study's dataset creation procedure is that weconsider the full set of Starbuck-free control ZIPs as our candidate placebo pool. From this placebo pool, we random sample a subset of ZIPs of size same as number of real treatment ZIPs. We designate this subset as our synthetic treatment group by setting the starbucks_opened to 1, i.e. we simulate the entry of a Starbucks store in each of these pseudo-treatment ZIPs. Next, from the remaining subset of control ZIPs, we create an economic distance-matched set of controls using the same procedure as in the real study. Indeed, the rest of the training data set creation procedure is identical to that of the real study, and as is the training of the model itself. Following is the code to accomplish all of the above:  
+The data processing and training data creation steps for the placebo model are approximately the same as for the real model (both models being TWFE event study models with the same structural form). The significant departure from the real study's dataset creation procedure is that we consider the full set of Starbuck-free control ZIPs as our candidate placebo pool. From this placebo pool, we random sample a subset of ZIPs of size same as number of real treatment ZIPs. We designate this subset as our synthetic treatment group by setting the starbucks_opened to 1, i.e. we simulate the entry of a Starbucks store in each of these pseudo-treatment ZIPs. Next, from the remaining subset of control ZIPs, we create an economic distance-matched set of controls using the same procedure as in the real study. Indeed, the rest of the training data set creation procedure is identical to that of the real study, and as is the training of the model itself. Following is the code to accomplish all of the above:  
 
 ```python
 # We'll assume that you have finished building df_all using steps 1 through 8 in the Data pre-processing sub-section of the real study. You may execute the following print statements to verify that it has the correct data:
@@ -1283,7 +1285,7 @@ print(f_test)
 
 ```
 
-You will see the following kind of training output. What's starkly evident in the output is that **all event time coefficients $\beta_{\tau}$ for $\tau$ = -4 t +5 have lost signnificance**. This is exactly the result one would expect if Starbucks entry and house price growth _are_ correlated.  
+You will see the following kind of training output. What's starkly evident in the output is that **all event time coefficients $\beta_{\tau}$ for $\tau$ = -4 t +5 have lost significance**. This is exactly the result one would expect if Starbucks entry and house price growth _are_ correlated.  
 
 ![Training Summary of the TWFE event study](images/Table1b.jpg)  
 
@@ -1409,8 +1411,8 @@ You would see the following plot indicating a clear divergence between the real 
 ![Comparison of fitted coefficients of the pre- and post-entry event variables D-4 to D5 from the real and placebo studies (coefficients fitted using OLS with standard errors clustered at ZIP level)](images/Fig7.jpg)  
 
 ## Anticipation
-Anticipation occurs when to-be-treated units start experiencing treatment effects "in anticipation of" treatment occuring, usually close to the treatment time. A study such as ours that explicitly studies reverse causation is particularly sensitive to anticipation as there is no good means to study and discount violation of parallel trends outside of a placebo setting. In our case, neighborhoods in which Starbucks makes a first time entry could, anticipation of such an entry, start becoming costlier than the matched controls, especially close to the entry year.  
-While such anticipation is a plausible in theory, if you look closely at the pre-entry trend of event time coeffcients, anticipation seems highly unlikely in our data set. The ZIPs that eventually receive Starbucks start growing faster much before Starbucks' entry. Still we can easily confirm our judgement by performing a progressive **donut**. We'll repeatedly test for joint zero-ness of pre-trend coefficients (using a Wald test) and associated pre-trend slope by progressively removing the pre-trends at $\tau$ = -1, -2, -3.  
+Anticipation occurs when to-be-treated units start experiencing treatment effects "in anticipation of" treatment occurring, usually close to the treatment time. A study such as ours that explicitly studies reverse causation is particularly sensitive to anticipation as there is no good means to study and discount violation of parallel trends outside of a placebo setting. In our case, neighborhoods in which Starbucks makes a first-time entry could, anticipation of such an entry, start becoming costlier than the matched controls, especially close to the entry year.  
+While such anticipation is a plausible in theory, if you look closely at the pre-entry trend of event time coefficients, anticipation seems highly unlikely in our data set. The ZIPs that eventually receive Starbucks start growing faster much before Starbucks' entry. Still, we can easily confirm our judgement by performing a progressive **donut**. We'll repeatedly test for joint zero-ness of pre-trend coefficients (using a Wald test) and associated pre-trend slope by progressively removing the pre-trends at $\tau$ = -1, -2, -3.  
 ```python
 # Parse tau for names like: tm_4, tm_3, tm_2, tm_1, t0, t1, ... t5
 def _parse_tau(colname: str) -> int:
@@ -1485,7 +1487,7 @@ You should see the following output:
 
 ![TWFE donuts](images/Table2.jpg)
 
-All p-values are much less than 0.05. H0 (zero pre-trend coefficients) is strongly rejected after dropping the coefficients at $\tau$= -1, [-1, -2], and [-1, -2, -3]. So we reject the possibility that anticipation is the only reason house prices increase beyond matched controls in neighborhoods that eventually receive a Starbuck entry.  
+All p-values are much less than 0.05. H0 (zero pre-trend coefficients) is strongly rejected after dropping the coefficients at $\tau$= -1, [-1, -2], and [-1, -2, -3]. So, we reject the possibility that anticipation is the only reason house prices increase beyond matched controls in neighborhoods that eventually receive a Starbuck entry.  
 
 
 ## Why are ZIP FEs left out of the TWFE model?
@@ -1536,14 +1538,14 @@ You can see the training output [here](results/TWFE_With_Zip_And_Year_FEs_No_Cov
 
 In both cases, notice the following about the above result:  
 * **R² explosion (0.288 --> 0.995)**:  As expected the ZIP FEs soak up all the variance leaving only the intra-ZIP over-time variance to be measured by the event time dummies. _But that's not what we want these dummies to measure!_
-* **Event-time coefficients flip sign from positive to negative**: Does this mean Starbucks preferentially seeks out neighborhoods with a nagative house price trend? That doesn't make sense. At any rate, we shouldn't read too much into the flipped signs as most of the inter-ZIP variance is already captured by the ZIP FEs, and the event coefficients are probably measuring changes with respect to their respective mean price level instead of with respect to the controls. 
+* **Event-time coefficients flip sign from positive to negative**: Does this mean Starbucks preferentially seeks out neighborhoods with a negative house price trend? That doesn't make sense. At any rate, we shouldn't read too much into the flipped signs as most of the inter-ZIP variance is already captured by the ZIP FEs, and the event coefficients are probably measuring changes with respect to their respective mean price level instead of with respect to the controls. 
 * **Very tiny eigenvalue / singularity warning, and rank deficiency**: Notice the **BIG RED FLAGS** waved by Statsmodels in the Notes section of the output and also warning about rank deficiency. The almost zero eigenvalue implies that the X matrix (the regressors) are almost perfectly colinear. They are almost perfect linear combinations of other regressors. The rank warning confirms this. Out of the 1000+ regressors we added, only 20 or so were found to be independent. In such a circumstance, the X'X matrix that is at the heart of the OLS estimator ((X′X)^(−1)X′y) is basically non-invertible).  
 
 In plain words, this is a terrible model.  
 
-The solution lies in the insight that a neighborhood (a ZIP) projects a certain "personality" that is multi-facted. Different facets of this personality come in to play in determining (directly or indirectly) the attractiveness of neighborhood and thereby, the house price. Important facets such as neighboorhood affluence, gentrification, and historical price momentum can be presumed to be strong determiners of house price growth. Given the problems we saw with ZIP FEs, we instead included PC_AGI and the historical 2 year and 5 year price momentum variables as covariates.  
+The solution lies in the insight that a neighborhood (a ZIP) projects a certain "personality" that is multi-faceted. Different facets of this personality come in to play in determining (directly or indirectly) the attractiveness of neighborhood and thereby, the house price. Important facets such as neighborhood affluence, gentrification, and historical price momentum can be presumed to be strong determiners of house price growth. Given the problems we saw with ZIP FEs, we instead included PC_AGI and the historical 2 year and 5 year price momentum variables as covariates.  
  
-We can run some (indirect) tests to validate the suitability of these covariates for capturing much of the price variance that ZIP FEs would have otherwise capatured:  
+We can run some (indirect) tests to validate the suitability of these covariates for capturing much of the price variance that ZIP FEs would have otherwise captured:  
 
 **VIF analysis**  
 This is R² of covariates on ZIP FEs and Year FEs. It tells us how much of the variance of covariates is explained by the FEs, particularly the ZIP FEs.  
@@ -2040,7 +2042,7 @@ When you run the above massive chunk of code, you should see the following two p
 ![Cohort-wise ATT broken out by event time](images/Fig10.jpg)
 
 Both plots show exactly the cohort level differences in ATT that we were expecting to see. The second plot (cohort-wise trend of the ATT(g) across event times $\tau$ = -4 through +5), is where the real action is:  
-* The effect for the earlier cohorts (g=2017, 2018, 2019) is strongly positive and more-or-less steady in the 20%-40% range across the full range of $\tau$. This is indeed very encouraging and, in our opinion, sufficient justification of plasibility of both the forward and reverse effect.
+* The effect for the earlier cohorts (g=2017, 2018, 2019) is strongly positive and more-or-less steady in the 20%-40% range across the full range of $\tau$. This is indeed very encouraging and, in our opinion, sufficient justification of plausibility of both the forward and reverse effect.
 * The effect for g=2020 is smaller (around 20%) but still strongly positive.
 * The effect for g=2021 is really more noise than valid effect.  
 
@@ -2049,10 +2051,10 @@ Recall that the TWFE reported a strong, steady pre-entry growth trend relative t
 ## Cross-validating the results using the Borusyak–Jaravel–Spiess (BJS) model
 
 The results from our TWFE event study have largely survived fine-grained scrutiny.
- - **Strong pre- and post-entry trends**: Both the pre- and post-entry trned in the event coefficients $\beta_{\tau}$ have been strongly positive and rising suggesting a strong plausibility of both reverse (pre-entry) and forward (post-entry) causation.  
+ - **Strong pre- and post-entry trends**: Both the pre- and post-entry trend in the event coefficients $\beta_{\tau}$ have been strongly positive and rising suggesting a strong plausibility of both reverse (pre-entry) and forward (post-entry) causation.  
  - **Clearcut placebo-based vindication**: Placebo results (statistically insignificant pre- and post-trends under fake treatment) showed that the pre- and post-entry effects were not driven purely by non-Starbucks covariates, omitted variables, and model structure.
  - **Anticipation not a concern**: The strong multi-year rising pre-entry trend indicates that anticipation, if present, was not only driver of pre-entry house price growth in treated ZIPs. The progressive donut analysis of pre-trends validated this judgement.
-  - **Cohort-level heterogenity present but explainable, and not a concern**: Cohort-wise analysis of trends yielded patterns that could be tied back to the shape of the overall trend curve reported by the TWFE event model. If at all, it validated our judgement that the event coefficients reported by the TWFE event study are likely to be biased down.
+  - **Cohort-level heterogeneity present but explainable, and not a concern**: Cohort-wise analysis of trends yielded patterns that could be tied back to the shape of the overall trend curve reported by the TWFE event model. If at all, it validated our judgement that the event coefficients reported by the TWFE event study are likely to be biased down.
 
 It's okay to stop at this point, but we will still perform one final validation. We'll run a quick regression using using the BJS (2021) model which does not consider Already Treated units as controls and thereby walks around the control group contamination experienced by the TWFE in a staggered entry setting such as ours.  
 
@@ -2062,7 +2064,7 @@ The following code builds and trains a BJS model on the Starbucks dataset, perfo
 # BJS (2021) robustness with FAST cluster bootstrap (no refits)
 # - Absorbs ZIP & Year FE via PanelOLS; falls back to Year-FE-only if needed.
 # - τ window: [-5,5]; years: 2012..YEAR_MAX (currently 2022, but change to a later date like 2027 if you get a fresh dataset from FHFA in the next few years)
-# - Outputs ATT(τ), CIs/p-values, joint pretrend test, and a percent-scale plot.
+# - Outputs ATT(τ), CIs/p-values, joint pre-trend test, and a percent-scale plot.
 
 YEAR_MAX = 2022
 TAU_MIN, TAU_MAX = -5, 5
@@ -2371,5 +2373,7 @@ Running the above code should display the following figure and table, which form
 
 ![Dynamic ATT by event time (BJS)](images/Fig11.jpg)  
 
+---
+_**Starbucks :tm:** is a registered trademark of the [Starbucks Corporation](www.starbucks.com)._
 
 
