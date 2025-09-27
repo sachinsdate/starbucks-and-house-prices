@@ -1,14 +1,15 @@
-This is the companion repository for the paper **"An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry" accepted at [The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA)](https://dsaa.ieee.org/2025/technical-program/).**
+<p align="center">
+  <img src="images/Vincent_van_Gogh_(1853-1890)_Caféterras_bij_nacht_(place_du_Forum)_Kröller-Müller_Museum_Otterlo_23-8-2016_13-35-40.JPG" alt="Café Terrace at Night"/>
+</p>
 
-_**Starbucks :tm:** is a registered trademark of the [Starbucks Corporation](www.starbucks.com)._
+This is the companion repository for the paper **"An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry" accepted at [The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA)](https://dsaa.ieee.org/2025/technical-program/).**
 
 # Objective
 Our study tries to answer two questions:
-1.	**Does a higher pre-existing house price index (HPI) relative to matched controls make Starbucks’ entry more likely?** In other words, does Starbucks, more often than not, enter neighborhoods that see higher than average house price growth? This is the **reverse effect**. If it exists, **reverse causation** is plausible although not guaranteed, because **anticipation** is likely. Neighborhoods that anticipate Starbucks' entry might start become dearer (especially close to the entry year). We'll examine this point closely soon. The effect of **confounders** is equally important. Variables such as mass transit improvements could boost house prices. But they also increase foot traffic, population density, and with that, make the neighborhood attractive to a cafe such as Starbucks. Thus, it's a strong statement to say that Starbucks proactively _selects_ for fast growing neighborhoods, and _that_ makes it a very interesting topic of research. 
+1.	**Does a higher pre-existing House Price Index (HPI) relative to matched controls make Starbucks’ entry more likely?** In other words, does Starbucks, more often than not, enter neighborhoods that see higher than average house price growth? This is the **reverse effect**. If it exists, **reverse causation** is plausible although not guaranteed, because **anticipation** is likely. Neighborhoods that anticipate Starbucks' entry might start become dearer (especially close to the entry year). We'll examine this point closely soon. The effect of **confounders** is equally important. Variables such as mass transit improvements could boost house prices. But they also increase foot traffic, population density, and with that, make the neighborhood attractive to a cafe such as Starbucks. Thus, it's a strong statement to say that Starbucks proactively _selects_ for fast growing neighborhoods, and _that_ makes it a very interesting topic of research. 
 2.	**Is Starbucks’ entry followed by a higher HPI relative to matched controls?** In other words, do neighborhoods that witness a first-time entry of Starbucks also witness a higher than average house price growth, post-entry? This is the **forward effect**. It is also the classic correlation versus forward causation question subject to the effect of **confounders**.  
 
-> [!NOTE]
-> Our study was able to simultaneously estimate both the reverse and the forward effect using a single statistical model.
+_Our study was able to simultaneously estimate both the reverse and the forward effect using a single statistical model._
 
 # The Hedonic Model and the Problem of Endogeneity
 A setting where a price variable (such as HPI) is a function of one or more variables lends itself to a [Hedonic Regression Model](https://en.wikipedia.org/wiki/Hedonic_regression). In a hedonic setting, the coefficients of the explanatory variables act as utilities (negative or positive). Ours is a hedonic setting, and as with all such settings, it is vulnerable to endogeneity. Endogeneity occurs when you omit one or more important variables that are correlated with the response variable. Omission of such variables causes their effect to hide inside (and operate from) the error term of the model. If any of those omitted variables are also correlated with the one of the variables in your model, it baises the coefficients of the model's variables that they are correlated with. In simple words, it makes them appear more or less important than they actually are. In a hedonic setting, it's impossible to completely avoid endogeneity. But you can minimize it through the judicious choice of model, and the use of covariates. Additionally, we add a **placebo arm** – a falsification test – to verify that any pre or post store-opening effects we observed weren’t driven entirely by non-Starbucks covariates, omitted variables, or spurious trends or artifacts in our data or specification.
@@ -2374,6 +2375,6 @@ Running the above code should display the following figure and table, which form
 ![Dynamic ATT by event time (BJS)](images/Fig11.jpg)  
 
 ---
-_**Starbucks :tm:** is a registered trademark of the [Starbucks Corporation](www.starbucks.com)._
+_**Starbucks :tm:** is a registered trademark of the [Starbucks Corporation](https://www.starbucks.com)._
 
 
