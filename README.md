@@ -887,8 +887,8 @@ sns.violinplot(
     hue="Group",
     split=True,          # requires exactly two hue levels
     inner="quartile",    # show quartiles inside each violin
-    cut=0,               # (optional) don’t extend KDE beyond data
-    density_norm="width"        # (optional) keep widths comparable
+    cut=0,               # Don’t extend KDE beyond data
+    density_norm="width"        # Keep widths comparable
 )
 plt.title("Comparison of Standardized Matching Variables Between Treatment and Matched Controls")
 plt.show()
