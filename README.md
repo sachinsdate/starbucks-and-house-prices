@@ -2,7 +2,7 @@
   <img src="images/Vincent_van_Gogh_(1853-1890)_Caféterras_bij_nacht_(place_du_Forum)_Kröller-Müller_Museum_Otterlo_23-8-2016_13-35-40.JPG" alt="Café Terrace at Night"/>
 </p>
 
-This is the companion repository for the paper **"An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry" accepted at [The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA)](https://dsaa.ieee.org/2025/technical-program/).**
+This is the companion repository for the paper **[An Event Study Framework For Analyzing Bidirectional Causality Between House Prices and Premium Café Entry](https://doi.org/10.1109/DSAA65442.2025.11247972) accepted at [The 12th IEEE International Conference on Data Science and Advanced Analytics (DSAA)](https://dsaa.ieee.org/2025/technical-program/).**
 
 # Objective
 Our study tries to answer two questions:
